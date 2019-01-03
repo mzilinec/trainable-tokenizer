@@ -221,3 +221,12 @@ his own features and specify which features are significant for what tokens.
     expanded for the duration of the tokenization and if they are to be kept
     expanded in the output; if XML should be hidden from tokenization), options
     for logging the contexts and outcomes to a third file and others.
+
+
+3) Running with Docker
+----------------------
+The easiest way to get started without managing dependencies is using the provided Dockerfile.
+```
+docker build -t trtok .
+docker run -it trtok bash
+```
