@@ -1,5 +1,5 @@
-trtok - a fast and trainable tokenizer for natural languages
-------------------------------------------------------------
+# trtok
+## a fast and trainable tokenizer for natural languages
 
   Trtok is a very universal performance-oriented tokenizer for processing
 natural languages. It reads text and tries to correctly detect sentence
@@ -14,8 +14,7 @@ understands the data can be extensively customized by the user who can define
 his own features and specify which features are significant for what tokens.
 
 
-1) Tokenization schemes
------------------------
+## 1) Tokenization schemes
 
   The user might want to use trtok for processing more than 1 language or for
   processing 1 language in many ways. These different ways of tokenization are
@@ -28,7 +27,7 @@ his own features and specify which features are significant for what tokens.
   where a scheme inherits all the configuration files of its ancestors unless
   it redefines them by having a configuration file of the same name.
 
-  a) Rough tokenization rules
+###  a) Rough tokenization rules
 
     The tokenizer identifies all potential token and sentence boundaries within
     the text and uses them and the whitespace to split the text into short
@@ -55,7 +54,7 @@ his own features and specify which features are significant for what tokens.
 
     The files may contain comments which are lines that begin with the # symbol.
 
-  b) User-defined properties
+###  b) User-defined properties
 
     Files with a .rep extension contain a single regular expression from the
     family of expressions allowed in PCRE (see pcre.org). A rough token is
@@ -67,7 +66,7 @@ his own features and specify which features are significant for what tokens.
     then that rough token is marked as having the property defined by that
     .listp file.
 
-  c) Feature selection
+###  c) Feature selection
 
     Every tokenization scheme must have a file named "features". For each rough
     token in the vicinity of the potential split/join/sentence break, it
@@ -104,7 +103,7 @@ his own features and specify which features are significant for what tokens.
         (0:fullstop ^ 1:initial)
         
 
-  d) Maxent training parameters
+###  d) Maxent training parameters
 
     More control over the process of training the probabilistic model can be
     had by manipulating the "maxent.params" file. This file is an INI-style
@@ -131,16 +130,15 @@ his own features and specify which features are significant for what tokens.
             format which is faster to load and smaller if Maxent was compiled
             with zlib support. Default false.
 
-  e) File lists and filename replacement regular expressions
+###  e) File lists and filename replacement regular expressions
 
     Files [prepare|train|heldout|tokenize|evaluate].[fl|fnre] are for
     convenience only and are described later.
  
 
-2) Running the tokenizer
-------------------------
+## 2) Running the tokenizer
 
-  a) Different ways of selecting input
+###  a) Different ways of selecting input
 
     The first argument passed to the tokenizer selects its mode, which can be
     either "prepare", "train", "tokenize" or "evaluate". The second argument is
@@ -186,7 +184,7 @@ his own features and specify which features are significant for what tokens.
     combo can also be explicitly selected by specifying the input file "-" on
     the command line.
 
-  b) Different modes of execution
+ ### b) Different modes of execution
 
     In "prepare" mode, the tokenizer reads the input, splits it into rough
     tokens and then outputs it with all possible splits and sentence breaks
@@ -211,7 +209,7 @@ his own features and specify which features are significant for what tokens.
     outcomes for later analysis. The "analyze" script provided with trtok will
     let you read this output and determine the accuracy of your system.
 
-  c) Different options
+###  c) Different options
 
     If you launch trtok with no command line arguments, you will get a summary
     of all the supported command line options and their meaning. These include
@@ -223,8 +221,7 @@ his own features and specify which features are significant for what tokens.
     for logging the contexts and outcomes to a third file and others.
 
 
-3) Running with Docker
-----------------------
+## 3) Running with Docker
 The easiest way to get started without managing dependencies is using the provided Dockerfile.
 ```
 docker build -t trtok .
